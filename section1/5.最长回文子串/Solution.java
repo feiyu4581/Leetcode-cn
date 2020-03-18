@@ -6,7 +6,7 @@
 
 // @lc code=start
 class Solution {
-    public String longestPalindrome(String s) {
+    public String longestPalindromeWithRange(String s) {
         int maxLength = -1;
         String maxString = "";
         for (int i = 0; i < s.length(); i++)  {
@@ -47,6 +47,39 @@ class Solution {
         }
 
         return maxLength;
+    }
+
+    public String longestPalindrome(String s) {
+        int[][] palidromeMaps = new int[s.length()][s.length()];
+
+        String maxPalidrome = "";
+        int maxLength = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            palidromeMaps[i][i] = 1;
+            if (maxLength < 1) {
+                maxLength = 1;
+                maxPalidrome = s.substring(i, i + 1);
+            }
+        }
+
+        for (int i = 1; i < s.length(); i++) {
+            for (int j = 0; j < s.length(); j++) {
+                if (j + i < s.length() && s.charAt(j) == s.charAt(j + i)) {
+                    if (i > 2 && palidromeMaps[j + 1][j + i - 1] > 0) {
+                        palidromeMaps[j][j + i] = palidromeMaps[j + 1][j + i - 1] + 2;
+                    } else if (i <= 2) {
+                        palidromeMaps[j][j + i] = i + 1;
+                    }
+
+                    if (palidromeMaps[j][j + i] > maxLength) {
+                        maxLength = palidromeMaps[j][j + i];
+                        maxPalidrome = s.substring(j, j + i + 1);
+                    }
+                }
+            }
+        }
+        return maxPalidrome;
     }
 
     public static void main(String[] args) {
