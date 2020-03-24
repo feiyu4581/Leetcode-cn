@@ -19,12 +19,12 @@ class Solution {
 
         for (int i = 0; i < str.length(); i++) {
             char current = str.charAt(i);
-            if (header & current == ' ') {
+            if (header && current == ' ') {
                 continue;
-            } else if (header & current == '+') {
+            } else if (header && current == '+') {
                 flag = 1;
                 header = false;
-            } else if (header & current == '-') {
+            } else if (header && current == '-') {
                 header = false;
                 flag = -1;
             } else if (Character.isDigit(current)) {
@@ -37,10 +37,10 @@ class Solution {
 
         int returnNum = 0;
         for (int num : nums) {
-            if (returnNum != 0 | num != 0) {
-                if (flag > 0 & ((maxRangeNum == returnNum & num > maxNum) | returnNum > maxRangeNum)) {
+            if (returnNum != 0 || num != 0) {
+                if (flag > 0 && ((maxRangeNum == returnNum && num > maxNum) || returnNum > maxRangeNum)) {
                     return maxRangeNum * 10 + maxNum;
-                } else if (flag < 0 & ((maxRangeNum == returnNum & num > maxPositionNum) | returnNum > maxRangeNum)) {
+                } else if (flag < 0 && ((maxRangeNum == returnNum && num > maxPositionNum) || returnNum > maxRangeNum)) {
                     return maxRangeNum * -10 - maxPositionNum;
                 }
 

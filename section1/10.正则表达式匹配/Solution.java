@@ -7,7 +7,7 @@
 // @lc code=start
 class Solution {
     private boolean isSubMatch(String s, int i, String p, int j) {
-        if (i == s.length() & j == p.length()) {
+        if (i == s.length() && j == p.length()) {
             return true;
         }
 
@@ -16,19 +16,19 @@ class Solution {
         }
 
         boolean existsStar = j + 1 < p.length() && p.charAt(j + 1) == '*';
-        if (existsStar & isSubMatch(s, i, p, j + 2)) {
+        if (existsStar && isSubMatch(s, i, p, j + 2)) {
             return true;
         }
 
         if (i < s.length()) {
             char current = p.charAt(j);
-            boolean match = current == '.' | current == s.charAt(i);
+            boolean match = current == '.' || current == s.charAt(i);
 
             if (existsStar && match) {
                 return isSubMatch(s, i + 1, p, j);
             }
 
-            return match & isSubMatch(s, i + 1, p, j + 1);
+            return match && isSubMatch(s, i + 1, p, j + 1);
         }
         return false;
     }

@@ -23,9 +23,9 @@ class Solution {
 
         int returnNum = 0;
         for (int num : nums) {
-            if (returnNum != 0 | num != 0) {
+            if (returnNum != 0 || num != 0) {
                 if (returnNum == maxRangeNum) {
-                    if ((flag > 0 & num > maxNum) | (flag < 0 & num > maxPositionNum)) {
+                    if ((flag > 0 && num > maxNum) || (flag < 0 && num > maxPositionNum)) {
                         return 0;
                     }
                 }
