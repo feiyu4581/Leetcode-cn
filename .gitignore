@@ -1,3 +1,6 @@
 Leetcode-cn.iml
 .idea/
 .vscode/settings.json
+debug/Solution.class
+.gitignore
+debug/Solution.java
