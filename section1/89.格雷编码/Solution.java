@@ -36,8 +36,7 @@ class Solution {
         // [0,1,3,2]
         System.out.println(solution.grayCode(2));
         // [0]
-       System.out.println(solution.grayCode(0));
-
+        System.out.println(solution.grayCode(0));
         System.out.println(solution.grayCode(3));
     }
 }
