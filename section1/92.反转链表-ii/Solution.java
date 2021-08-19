@@ -19,6 +19,40 @@ import javax.sound.midi.Soundbank;
  */
 
 
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+
+    public static ListNode createNodes(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+
+        ListNode res = new ListNode(nums[0]);
+        ListNode current = res;
+        for (int i = 1; i < nums.length; i++) {
+            current.next = new ListNode(nums[i]);
+            current = current.next;
+        }
+
+        return res;
+    }
+
+    @Override
+    public String toString() {
+        String res = "";
+        ListNode current = this;
+        while (current != null) {
+            res += current.val;
+            current = current.next;
+        }
+
+        return res;
+    }
+
+}
+
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         ListNode start = head;
@@ -38,7 +72,7 @@ class Solution {
             if (currentIndex == left) {
                 startNode = currentNode;
             }
-            
+
             if (currentIndex == right) {
                 startNode.next = nextNode;
 
@@ -55,6 +89,15 @@ class Solution {
         }
 
         return head;
+    }
+
+    public static void main(String[] ags) {
+        Solution solution = new Solution();
+        // [1, 4, 3, 2, 5]
+        System.out.println(solution.reverseBetween(ListNode.createNodes(new int[]{1,2,3,4,5}), 2, 4));
+        // [5]
+        System.out.println(solution.reverseBetween(ListNode.createNodes(new int[]{5}), 1, 1));
+        System.out.println(solution.reverseBetween(ListNode.createNodes(new int[]{3, 5}), 1, 1));
     }
 }
 // @lc code=end
