@@ -13,7 +13,7 @@ class Solution {
         int right = x;
 
         while (left <= right) {
-            int mid = left + ((right - left) >> 2);
+            int mid = left + ((right - left) >> 1);
             if (mid > minValue) {
                 right = mid - 1;
                 continue;

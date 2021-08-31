@@ -1,146 +1,73 @@
-package Solution;/*
- * @lc app=leetcode.cn id=85 lang=java
- *
- * [85] 最大矩形
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
  */
 
-// @lc code=start
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+    public static ListNode createNodes(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
 
-class Edge {
-    private final int start;
-    private final int end;
+        ListNode res = new ListNode(nums[0]);
+        ListNode current = res;
+        for (int i = 1; i < nums.length; i++) {
+            current.next = new ListNode(nums[i]);
+            current = current.next;
+        }
 
-    public Edge(int start, int end) {
-        this.start = start;
-        this.end = end;
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public int getEnd() {
-        return end;
-    }
-
-    public int getWidth() {
-        return end - start + 1;
-    }
-
-    public boolean isMixed(Edge other) {
-        return other.getEnd() >= this.getStart() && other.getStart() <= this.getEnd();
-    }
-
-    public Edge mixedEdge(Edge other) {
-        return new Edge(Math.max(this.getStart(), other.getStart()),  Math.min(this.getEnd(), other.getEnd()));
+        return res;
     }
 
     @Override
     public String toString() {
-        return start + "/" + end;
+        String res = "";
+        ListNode current = this;
+        while (current != null) {
+            res += current.val;
+            current = current.next;
+        }
+
+        return res;
     }
 }
 
+
 class Solution {
-    List<List<Edge>> edges;
-    Map<String, Integer> caches;
-    private static final char POINT = '1';
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummy = new ListNode(0);
+        ListNode start = head, current = dummy;
 
-    private int getMaxRectangle(Edge edge, int row, int length) {
-        int rectangle = edge.getWidth();
-        if (row < edges.size()) {
-            for (Edge rowEdge : edges.get(row)) {
-                if (rowEdge.getStart() > edge.getEnd()) {
-                    break;
-                }
-
-                if (edge.isMixed(rowEdge)) {
-                    Edge newEdge = edge.mixedEdge(rowEdge);
-                    rectangle = Math.max(
-                        Math.max(rectangle, newEdge.getWidth() * (length + 1)),
-                        getMaxRectangle(newEdge, row + 1, length + 1)
-                    );
-                }
+        ListNode lastNode = null;
+        while (start != null) {
+            if (lastNode == null || start.val != lastNode.val) {
+                current.next = start;
+                current = start;
             }
+
+            lastNode = start;
+            start = start.next;
         }
 
-        return rectangle;
-    }
-
-    public int maximalRectangle(char[][] matrix) {
-        this.edges = new ArrayList<>();
-        this.caches = new HashMap<>();
-        for (int i = 0; i < matrix.length; i++) {
-            List<Edge> rowEdges = new ArrayList<Edge>();
-            int pointNums = 0;
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == POINT) {
-                    pointNums++;
-                } else if (pointNums > 0) {
-                    rowEdges.add(new Edge(j - pointNums, j - 1));
-                    pointNums = 0;
-                }
-            }
-            if (pointNums > 0) {
-                rowEdges.add(new Edge(matrix[0].length - pointNums, matrix[0].length - 1));
-            }
-            this.edges.add(rowEdges);
-        }
-
-        int maxInt = 0;
-        for (int row = 0; row < matrix.length; row++) {
-            for (Edge edge : edges.get(row)) {
-                maxInt = Math.max(maxInt, getMaxRectangle(edge, row + 1, 1));
-            }
-        }
-
-        return maxInt;
+        current.next = null;
+        return dummy.next;
     }
 
     public static void main(String[] ags) {
         Solution solution = new Solution();
-        System.out.println(solution.maximalRectangle(new char[][]{
-                new char[]{'1','0','1','1','0','1'},
-                new char[]{'1','1','1','1','1','1'},
-                new char[]{'0','1','1','0','1','1'},
-                new char[]{'1','1','1','0','1','0'},
-                new char[]{'0','1','1','1','1','1'},
-                new char[]{'1','1','0','1','1','1'},
-        }) == 8);
-
-        System.out.println(solution.maximalRectangle(new char[][]{
-                new char[]{'0', '0', '1', '0'},
-                new char[]{'1', '1', '1', '1'},
-                new char[]{'1', '1', '1', '1'},
-                new char[]{'1', '1', '1', '0'},
-                new char[]{'1', '1', '0', '0'},
-                new char[]{'1', '1', '1', '1'},
-                new char[]{'1', '1', '1', '0'}
-        }) == 12);
-
-        System.out.println(solution.maximalRectangle(new char[][]{
-                new char[]{'1','0','1','0','0'},
-                new char[]{'1','0','1','1','1'},
-                new char[]{'1','1','1','1','1'},
-                new char[]{'1','0','0','1','0'}
-        }) == 6);
-
-        System.out.println(solution.maximalRectangle(new char[][]{
-                new char[]{'0','0','0','0','0','0','1'},
-                new char[]{'0','0','0','0','1','1','1'},
-                new char[]{'1','1','1','1','1','1','1'},
-                new char[]{'0','0','0','1','1','1','1'}
-        }) == 9);
-
-        System.out.println(solution.maximalRectangle(new char[][]{new char[]{'0'}}) == 0);
-        System.out.println(solution.maximalRectangle(new char[][]{new char[]{'1'}}) == 1);
-        System.out.println(solution.maximalRectangle(new char[][]{new char[]{'0', '0'}}) == 0);
+        // 1, 2
+        System.out.println(solution.deleteDuplicates(ListNode.createNodes(new int[]{1, 1, 2})));
+        // 1, 2, 3
+        System.out.println(solution.deleteDuplicates(ListNode.createNodes(new int[]{1,1,2,3,3})));
     }
 }
-// @lc code=end
-
