@@ -29,7 +29,7 @@ func isEqual(left, right *TreeNode) bool {
 	return left.Val == right.Val && isEqual(left.Left, right.Right) && isEqual(left.Right, right.Left)
 }
 
-//使用迭代方式来进行镜像校验
+// 使用迭代方式来进行镜像校验
 func isSymmetricByRange(root *TreeNode) bool {
 	currents := []*TreeNode{root}
 	for len(currents) > 0 {

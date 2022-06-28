@@ -15,6 +15,10 @@ func generateNode(value int) *TreeNode {
 }
 
 func ToNode(nodeValues []int) *TreeNode {
+	if len(nodeValues) == 0 {
+		return nil
+	}
+
 	head := generateNode(nodeValues[0])
 	currents := []*TreeNode{head}
 	currentIndex := 0
