@@ -17,7 +17,7 @@ import "fmt"
  *     Right *TreeNode
  * }
  */
-func buildTree(preorder []int, inorder []int) *TreeNode {
+func buildTree2(preorder []int, inorder []int) *TreeNode {
 	if len(preorder) == 0 {
 		return nil
 	}
@@ -33,17 +33,17 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 
 	return &TreeNode{
 		Val:   preorder[0],
-		Left:  buildTree(preorder[1:splitIndex+1], inorder[0:splitIndex]),
-		Right: buildTree(preorder[splitIndex+1:], inorder[splitIndex+1:]),
+		Left:  buildTree2(preorder[1:splitIndex+1], inorder[0:splitIndex]),
+		Right: buildTree2(preorder[splitIndex+1:], inorder[splitIndex+1:]),
 	}
 }
 
 func Test105() {
 	// [3,9,20,null,null,15,7]
-	fmt.Println(buildTree([]int{3, 9, 20, 15, 7}, []int{9, 3, 15, 20, 7}).ToValues())
+	fmt.Println(buildTree2([]int{3, 9, 20, 15, 7}, []int{9, 3, 15, 20, 7}).ToValues())
 
 	// [-1]
-	fmt.Println(buildTree([]int{-1}, []int{-1}).ToValues())
+	fmt.Println(buildTree2([]int{-1}, []int{-1}).ToValues())
 }
 
 // @lc code=end
