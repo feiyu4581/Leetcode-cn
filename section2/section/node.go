@@ -28,6 +28,7 @@ func ToNode(nodeValues []int) *TreeNode {
 	head := generateNode(nodeValues[0])
 	currents := []*TreeNode{head}
 	currentIndex := 0
+	left := true
 	for _, nodeValue := range nodeValues[1:] {
 		if currentIndex >= len(currents) {
 			nextCurrents := make([]*TreeNode, 0, len(currents)*2)
@@ -45,9 +46,11 @@ func ToNode(nodeValues []int) *TreeNode {
 			currentIndex = 0
 		}
 
-		if currents[currentIndex].Left == nil {
+		if left {
 			currents[currentIndex].Left = generateNode(nodeValue)
-		} else if currents[currentIndex].Right == nil {
+			left = false
+		} else {
+			left = true
 			currents[currentIndex].Right = generateNode(nodeValue)
 			currentIndex += 1
 		}
