@@ -1,5 +1,7 @@
 package section
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -12,6 +14,10 @@ func generateNode(value int) *TreeNode {
 	}
 
 	return &TreeNode{Val: value}
+}
+
+func (node *TreeNode) String() string {
+	return fmt.Sprintf("[Tree]%d", node.Val)
 }
 
 func ToNode(nodeValues []int) *TreeNode {
