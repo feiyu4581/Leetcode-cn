@@ -19,28 +19,28 @@ import "fmt"
  * }
  */
 
-func connectNode(left *Node, right *Node) {
+func connectNode1(left *Node, right *Node) {
 	if left == nil || right == nil {
 		return
 	}
 
 	left.Next = right
-	connectNode(left.Left, left.Right)
-	connectNode(right.Left, right.Right)
-	connectNode(left.Right, right.Left)
+	connectNode1(left.Left, left.Right)
+	connectNode1(right.Left, right.Right)
+	connectNode1(left.Right, right.Left)
 }
 
-func connect(root *Node) *Node {
+func connect1(root *Node) *Node {
 	if root == nil {
 		return root
 	}
-	connectNode(root.Left, root.Right)
+	connectNode1(root.Left, root.Right)
 	return root
 }
 
 func Test116() {
 	// 1,#,2,3,#,4,5,6,7,#
-	fmt.Println(connect(ToNode([]int{1, 2, 3, 4, 5, 6, 7})).ToValues())
+	fmt.Println(connect1(ToNode([]int{1, 2, 3, 4, 5, 6, 7})).ToValues())
 }
 
 // @lc code=end
