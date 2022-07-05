@@ -2,37 +2,36 @@ package section
 
 import "fmt"
 
-type Node struct {
+type TreeNode struct {
 	Val   int
-	Next  *Node
-	Left  *Node
-	Right *Node
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func generateNode(value int) *Node {
+func generateTreeNode(value int) *TreeNode {
 	if value == 0 {
 		return nil
 	}
 
-	return &Node{Val: value}
+	return &TreeNode{Val: value}
 }
 
-func (node *Node) String() string {
-	return fmt.Sprintf("[Node]%d", node.Val)
+func (node *TreeNode) String() string {
+	return fmt.Sprintf("[Tree]%d", node.Val)
 }
 
-func ToNode(nodeValues []int) *Node {
+func ToTreeNode(nodeValues []int) *TreeNode {
 	if len(nodeValues) == 0 {
 		return nil
 	}
 
-	head := generateNode(nodeValues[0])
-	currents := []*Node{head}
+	head := generateTreeNode(nodeValues[0])
+	currents := []*TreeNode{head}
 	currentIndex := 0
 	left := true
 	for _, nodeValue := range nodeValues[1:] {
 		if currentIndex >= len(currents) {
-			nextCurrents := make([]*Node, 0, len(currents)*2)
+			nextCurrents := make([]*TreeNode, 0, len(currents)*2)
 			for _, current := range currents {
 				if current.Left != nil {
 					nextCurrents = append(nextCurrents, current.Left)
@@ -48,11 +47,11 @@ func ToNode(nodeValues []int) *Node {
 		}
 
 		if left {
-			currents[currentIndex].Left = generateNode(nodeValue)
+			currents[currentIndex].Left = generateTreeNode(nodeValue)
 			left = false
 		} else {
 			left = true
-			currents[currentIndex].Right = generateNode(nodeValue)
+			currents[currentIndex].Right = generateTreeNode(nodeValue)
 			currentIndex += 1
 		}
 	}
@@ -60,14 +59,14 @@ func ToNode(nodeValues []int) *Node {
 	return head
 }
 
-func (node *Node) ToValues() []int {
+func (node *TreeNode) ToValues() []int {
 	values := make([]int, 0)
-	currents := []*Node{node}
+	currents := []*TreeNode{node}
 	currentIndex := 0
 
 	for len(currents) > 0 {
 		if currentIndex >= len(currents) {
-			nextCurrents := make([]*Node, 0, len(currents)*2)
+			nextCurrents := make([]*TreeNode, 0, len(currents)*2)
 			for _, current := range currents {
 				if current.Left != nil {
 					nextCurrents = append(nextCurrents, current.Left)

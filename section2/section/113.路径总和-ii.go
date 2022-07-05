@@ -50,13 +50,13 @@ func pathSum(root *TreeNode, targetSum int) [][]int {
 
 func Test113() {
 	// [[5,4,11,2],[5,8,4,5]]
-	fmt.Println(pathSum(ToNode([]int{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 5, 1}), 22))
+	fmt.Println(pathSum(ToTreeNode([]int{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 5, 1}), 22))
 
 	// []
-	fmt.Println(pathSum(ToNode([]int{1, 2, 3}), 5))
+	fmt.Println(pathSum(ToTreeNode([]int{1, 2, 3}), 5))
 
 	// []
-	fmt.Println(pathSum(ToNode([]int{1, 2}), 0))
+	fmt.Println(pathSum(ToTreeNode([]int{1, 2}), 0))
 }
 
 // @lc code=end

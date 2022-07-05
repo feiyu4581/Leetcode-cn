@@ -62,13 +62,13 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 
 func Test103() {
 	// [[3],[20,9],[15,7]]
-	fmt.Println(zigzagLevelOrder(ToNode([]int{3, 9, 20, 0, 0, 15, 7})))
+	fmt.Println(zigzagLevelOrder(ToTreeNode([]int{3, 9, 20, 0, 0, 15, 7})))
 
 	// [[1]]
-	fmt.Println(zigzagLevelOrder(ToNode([]int{1})))
+	fmt.Println(zigzagLevelOrder(ToTreeNode([]int{1})))
 
 	// []
-	fmt.Println(zigzagLevelOrder(ToNode([]int{})))
+	fmt.Println(zigzagLevelOrder(ToTreeNode([]int{})))
 }
 
 // @lc code=end

@@ -37,8 +37,8 @@ func minDepth(root *TreeNode) int {
 }
 
 func Test111() {
-	fmt.Println(minDepth(ToNode([]int{3, 9, 20, 0, 0, 15, 7})) == 2)
-	fmt.Println(minDepth(ToNode([]int{2, 0, 3, 0, 4, 0, 5, 0, 6})) == 5)
+	fmt.Println(minDepth(ToTreeNode([]int{3, 9, 20, 0, 0, 15, 7})) == 2)
+	fmt.Println(minDepth(ToTreeNode([]int{2, 0, 3, 0, 4, 0, 5, 0, 6})) == 5)
 }
 
 // @lc code=end

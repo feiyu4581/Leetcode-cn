@@ -30,10 +30,10 @@ func hasPathSum(root *TreeNode, targetSum int) bool {
 }
 
 func Test112() {
-	fmt.Println(hasPathSum(ToNode([]int{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 1}), 22))
-	fmt.Println(hasPathSum(ToNode([]int{-2, 0, -3}), -5) == true)
-	fmt.Println(hasPathSum(ToNode([]int{1, 2, 3}), 5) == false)
-	fmt.Println(hasPathSum(ToNode([]int{}), 0) == false)
+	fmt.Println(hasPathSum(ToTreeNode([]int{5, 4, 8, 11, 0, 13, 4, 7, 2, 0, 0, 0, 1}), 22))
+	fmt.Println(hasPathSum(ToTreeNode([]int{-2, 0, -3}), -5) == true)
+	fmt.Println(hasPathSum(ToTreeNode([]int{1, 2, 3}), 5) == false)
+	fmt.Println(hasPathSum(ToTreeNode([]int{}), 0) == false)
 }
 
 // @lc code=end

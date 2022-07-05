@@ -52,9 +52,9 @@ func isBalanced(root *TreeNode) bool {
 }
 
 func Test110() {
-	fmt.Println(isBalanced(ToNode([]int{3, 9, 20, 0, 0, 15, 7})))
-	fmt.Println(isBalanced(ToNode([]int{1, 2, 2, 3, 3, 0, 0, 4, 4})) == false)
-	fmt.Println(isBalanced(ToNode([]int{})))
+	fmt.Println(isBalanced(ToTreeNode([]int{3, 9, 20, 0, 0, 15, 7})))
+	fmt.Println(isBalanced(ToTreeNode([]int{1, 2, 2, 3, 3, 0, 0, 4, 4})) == false)
+	fmt.Println(isBalanced(ToTreeNode([]int{})))
 }
 
 // @lc code=end

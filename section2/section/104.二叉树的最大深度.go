@@ -38,7 +38,7 @@ func maxDepth(root *TreeNode) int {
 }
 
 func Test104() {
-	fmt.Println(maxDepth(ToNode([]int{3, 9, 20, 0, 0, 15, 7})) == 3)
+	fmt.Println(maxDepth(ToTreeNode([]int{3, 9, 20, 0, 0, 15, 7})) == 3)
 }
 
 // @lc code=end

@@ -43,7 +43,7 @@ func flatten(root *TreeNode) {
 }
 
 func Test114() {
-	nodes := ToNode([]int{1, 2, 5, 3, 4, 0, 6})
+	nodes := ToTreeNode([]int{1, 2, 5, 3, 4, 0, 6})
 	flatten(nodes)
 	// [1,null,2,null,3,null,4,null,5,null,6]
 	fmt.Println(nodes.ToValues())

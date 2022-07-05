@@ -53,13 +53,13 @@ func levelOrder(root *TreeNode) [][]int {
 
 func Test102() {
 	// [[3],[9,20],[15,7]]
-	fmt.Println(levelOrder(ToNode([]int{3, 9, 20, 0, 0, 15, 7})))
+	fmt.Println(levelOrder(ToTreeNode([]int{3, 9, 20, 0, 0, 15, 7})))
 
 	// [[1]]
-	fmt.Println(levelOrder(ToNode([]int{1})))
+	fmt.Println(levelOrder(ToTreeNode([]int{1})))
 
 	// []
-	fmt.Println(levelOrder(ToNode([]int{})))
+	fmt.Println(levelOrder(ToTreeNode([]int{})))
 }
 
 // @lc code=end

@@ -68,8 +68,8 @@ func isSymmetric(root *TreeNode) bool {
 }
 
 func Test101() {
-	fmt.Println(isSymmetric(ToNode([]int{1, 2, 2, 3, 4, 4, 3})))
-	fmt.Println(!isSymmetric(ToNode([]int{1, 2, 2, 0, 3, 0, 3})))
+	fmt.Println(isSymmetric(ToTreeNode([]int{1, 2, 2, 3, 4, 4, 3})))
+	fmt.Println(!isSymmetric(ToTreeNode([]int{1, 2, 2, 0, 3, 0, 3})))
 }
 
 // @lc code=end
