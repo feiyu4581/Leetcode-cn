@@ -9,7 +9,7 @@ import "fmt"
  */
 
 // @lc code=start
-func maxProfit(prices []int) int {
+func maxProfit2(prices []int) int {
 	if len(prices) == 0 {
 		return 0
 	}
@@ -31,8 +31,8 @@ func maxProfit(prices []int) int {
 }
 
 func Test121() {
-	fmt.Println(maxProfit([]int{7, 1, 5, 3, 6, 4}) == 5)
-	fmt.Println(maxProfit([]int{7, 6, 4, 3, 1}) == 0)
+	fmt.Println(maxProfit2([]int{7, 1, 5, 3, 6, 4}) == 5)
+	fmt.Println(maxProfit2([]int{7, 6, 4, 3, 1}) == 0)
 }
 
 // @lc code=end
