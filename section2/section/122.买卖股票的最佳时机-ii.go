@@ -12,7 +12,7 @@ import (
  */
 
 // @lc code=start
-func maxProfit(prices []int) int {
+func maxProfit3(prices []int) int {
 	total := 0
 	if len(prices) == 0 {
 		return total
@@ -36,9 +36,9 @@ func maxProfit(prices []int) int {
 }
 
 func Test122() {
-	fmt.Println(maxProfit([]int{7, 1, 5, 3, 6, 4}) == 7)
-	fmt.Println(maxProfit([]int{1, 2, 3, 4, 5}) == 4)
-	fmt.Println(maxProfit([]int{7, 6, 4, 3, 1}) == 0)
+	fmt.Println(maxProfit3([]int{7, 1, 5, 3, 6, 4}) == 7)
+	fmt.Println(maxProfit3([]int{1, 2, 3, 4, 5}) == 4)
+	fmt.Println(maxProfit3([]int{7, 6, 4, 3, 1}) == 0)
 }
 
 // @lc code=end
