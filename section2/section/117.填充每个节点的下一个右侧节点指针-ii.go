@@ -10,27 +10,27 @@ import "fmt"
 
 // @lc code=start
 /**
- * Definition for a Node.
- * type Node struct {
+ * Definition for a NextNode.
+ * type NextNode struct {
  *     Val int
- *     Left *Node
- *     Right *Node
- *     Next *Node
+ *     Left *NextNode
+ *     Right *NextNode
+ *     Next *NextNode
  * }
  */
 
-func connect(root *Node) *Node {
+func connect(root *NextNode) *NextNode {
 	if root == nil {
 		return root
 	}
 
-	currents := []*Node{root}
+	currents := []*NextNode{root}
 	for len(currents) > 0 {
 		for index := range currents[:len(currents)-1] {
 			currents[index].Next = currents[index+1]
 		}
 
-		nextCurrent := make([]*Node, 0, len(currents))
+		nextCurrent := make([]*NextNode, 0, len(currents))
 		for _, node := range currents {
 			if node.Left != nil {
 				nextCurrent = append(nextCurrent, node.Left)

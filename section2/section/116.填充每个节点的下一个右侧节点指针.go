@@ -10,16 +10,16 @@ import "fmt"
 
 // @lc code=start
 /**
- * Definition for a Node.
- * type Node struct {
+ * Definition for a NextNode.
+ * type NextNode struct {
  *     Val int
- *     Left *Node
- *     Right *Node
- *     Next *Node
+ *     Left *NextNode
+ *     Right *NextNode
+ *     Next *NextNode
  * }
  */
 
-func connectNode1(left *Node, right *Node) {
+func connectNode1(left *NextNode, right *NextNode) {
 	if left == nil || right == nil {
 		return
 	}
@@ -30,7 +30,7 @@ func connectNode1(left *Node, right *Node) {
 	connectNode1(left.Right, right.Left)
 }
 
-func connect1(root *Node) *Node {
+func connect1(root *NextNode) *NextNode {
 	if root == nil {
 		return root
 	}
