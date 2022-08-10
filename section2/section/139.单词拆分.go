@@ -13,7 +13,7 @@ import (
 
 // @lc code=start
 
-func recursiveWordBreak(s string, index int, maxLength int, wordMap map[string]struct{}, cache map[int]bool) bool {
+func recursivewordBreak2(s string, index int, maxLength int, wordMap map[string]struct{}, cache map[int]bool) bool {
 	if index >= len(s) {
 		return true
 	}
@@ -23,7 +23,7 @@ func recursiveWordBreak(s string, index int, maxLength int, wordMap map[string]s
 	}
 
 	for i := 1; i <= maxLength && index+i <= len(s); i++ {
-		if _, ok := wordMap[s[index:index+i]]; ok && recursiveWordBreak(s, index+i, maxLength, wordMap, cache) {
+		if _, ok := wordMap[s[index:index+i]]; ok && recursivewordBreak2(s, index+i, maxLength, wordMap, cache) {
 			cache[index] = true
 			return true
 		}
@@ -33,7 +33,7 @@ func recursiveWordBreak(s string, index int, maxLength int, wordMap map[string]s
 	return false
 }
 
-func wordBreak(s string, wordDict []string) bool {
+func wordBreak2(s string, wordDict []string) bool {
 	if s == "" {
 		return true
 	}
@@ -51,13 +51,13 @@ func wordBreak(s string, wordDict []string) bool {
 		}
 	}
 
-	return recursiveWordBreak(s, 0, maxLength, wordMap, make(map[int]bool, len(s)))
+	return recursivewordBreak2(s, 0, maxLength, wordMap, make(map[int]bool, len(s)))
 }
 
 func Test139() {
-	fmt.Println(wordBreak("leetcode", []string{"leet", "code"}))
-	fmt.Println(wordBreak("applepenapple", []string{"apple", "pen"}))
-	fmt.Println(wordBreak("catsandog", []string{"cats", "dog", "sand", "and", "cat"}) == false)
+	fmt.Println(wordBreak2("leetcode", []string{"leet", "code"}))
+	fmt.Println(wordBreak2("applepenapple", []string{"apple", "pen"}))
+	fmt.Println(wordBreak2("catsandog", []string{"cats", "dog", "sand", "and", "cat"}) == false)
 }
 
 // @lc code=end
