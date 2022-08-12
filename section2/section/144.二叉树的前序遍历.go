@@ -48,15 +48,15 @@ func preorderTraversal(root *TreeNode) []int {
 	return nums
 }
 
-// func Test144() {
-// 	// [1, 2, 3]
-// 	fmt.Println(preorderTraversal(ToTreeNode([]int{1, 0, 2, 3})))
+func Test144() {
+	// [1, 2, 3]
+	fmt.Println(preorderTraversal(ToTreeNode([]int{1, 0, 2, 3})))
 
-// 	// []
-// 	fmt.Println(preorderTraversal(ToTreeNode([]int{})))
+	// []
+	fmt.Println(preorderTraversal(ToTreeNode([]int{})))
 
-// 	// [1]
-// 	fmt.Println(preorderTraversal(ToTreeNode([]int{1})))
-// }
+	// [1]
+	fmt.Println(preorderTraversal(ToTreeNode([]int{1})))
+}
 
 // @lc code=end
