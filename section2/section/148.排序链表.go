@@ -76,7 +76,6 @@ func Test148() {
 		nums = append(nums, i+1)
 	}
 	sortList(ToListNode(nums))
-	fmt.Println(count)
 	fmt.Println(sortList(ToListNode([]int{4, 2, 1, 3})).ToValues())
 	fmt.Println(sortList(ToListNode([]int{-1, 5, 3, 4, 0})).ToValues())
 }
