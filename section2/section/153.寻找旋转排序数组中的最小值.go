@@ -9,7 +9,7 @@ import "fmt"
  */
 
 // @lc code=start
-func findMin(nums []int) int {
+func findMin2(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
 	}
