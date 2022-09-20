@@ -25,7 +25,7 @@ type LRUCache struct {
 	Length int
 }
 
-func Constructor(capacity int) LRUCache {
+func Constructor2(capacity int) LRUCache {
 	return LRUCache{
 		Head:   nil,
 		Tail:   nil,
@@ -93,7 +93,7 @@ func (this *LRUCache) Put(key int, value int) {
 }
 
 func Test146() {
-	lRUCache := Constructor(2)
+	lRUCache := Constructor2(2)
 	lRUCache.Put(1, 1)                 // 缓存是 {1=1}
 	lRUCache.Put(2, 2)                 // 缓存是 {1=1, 2=2}
 	fmt.Println(lRUCache.Get(1) == 1)  // 返回 1
