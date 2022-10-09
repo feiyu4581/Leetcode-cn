@@ -21,7 +21,7 @@ type MinStack struct {
 	head   *StackNode
 }
 
-func Constructor() MinStack {
+func Constructor3() MinStack {
 	return MinStack{
 		stacks: make([]int, 12),
 		length: 0,
@@ -108,7 +108,7 @@ func (this *MinStack) GetMin() int {
 // @lc code=end
 
 func Test155() {
-	minStack := Constructor()
+	minStack := Constructor3()
 	minStack.Push(-2)
 	minStack.Push(0)
 	minStack.Push(-3)
