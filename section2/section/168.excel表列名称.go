@@ -36,9 +36,9 @@ func convertToTitle(columnNumber int) string {
 }
 
 func Test168() {
-	fmt.Println(convertToTitle(52))
-	fmt.Println(convertToTitle(676))
-	fmt.Println(convertToTitle(701))
+	fmt.Println(convertToTitle(52) == "AZ")
+	fmt.Println(convertToTitle(676) == "YZ")
+	fmt.Println(convertToTitle(701) == "ZY")
 	fmt.Println(convertToTitle(1) == "A")
 	fmt.Println(convertToTitle(28) == "AB")
 	fmt.Println(convertToTitle(2147483647) == "FXSHRXW")
