@@ -1,7 +1,9 @@
 package main
 
-import "section2/section"
+import (
+	"section2/section"
+)
 
 func main() {
-	section.Test102()
+	section.Test200()
 }
