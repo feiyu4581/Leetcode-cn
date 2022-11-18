@@ -2,7 +2,6 @@ package section
 
 import (
 	"fmt"
-	"math"
 )
 
 /*
@@ -12,20 +11,6 @@ import (
  */
 
 // @lc code=start
-func computePrimes(n int) bool {
-	if n%2 == 0 {
-		return false
-	}
-
-	for i := 3; i <= int(math.Sqrt(float64(n))); i = i + 2 {
-		if n%i == 0 {
-			return false
-		}
-	}
-
-	return true
-}
-
 func countPrimes(n int) (cnt int) {
 	isPrime := make([]bool, n)
 	for i := range isPrime {
