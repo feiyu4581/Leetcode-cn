@@ -60,6 +60,9 @@ func ToTreeNode(nodeValues []int) *TreeNode {
 }
 
 func (node *TreeNode) ToValues() []int {
+	if node == nil {
+		return nil
+	}
 	values := make([]int, 0)
 	currents := []*TreeNode{node}
 	currentIndex := 0
