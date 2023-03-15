@@ -122,13 +122,13 @@ func addOperators(num string, target int) []string {
 
 func Test282() {
 	// ["1+2+3", "1*2*3"]
-	//fmt.Println(addOperators("123", 6))
+	fmt.Println(addOperators("123", 6))
 
 	// ["2*3+2", "2+3*2"]
-	//fmt.Println(addOperators("232", 8))
+	fmt.Println(addOperators("232", 8))
 
 	// []
-	//fmt.Println(addOperators("3456237490", 9191))
+	fmt.Println(addOperators("3456237490", 9191))
 
 	// ["1*0+5","10-5"]
 	fmt.Println(addOperators("105", 5))
