@@ -10,20 +10,29 @@ import "fmt"
 
 // @lc code=start
 type NumArray struct {
-	nums []int
+	nums  []int
+	cache map[[2]int]int
 }
 
-func Constructor(nums []int) NumArray {
-	return NumArray{nums: nums}
+func Constructor303(nums []int) NumArray {
+	return NumArray{
+		nums:  nums,
+		cache: make(map[[2]int]int, 0),
+	}
 }
 
 func (this *NumArray) SumRange(left int, right int) int {
-	res := 0
-	for i := left; i <= right; i++ {
-		res += this.nums[i]
+	key := [2]int{left, right}
+	if _, ok := this.cache[key]; !ok {
+		res := 0
+		for i := left; i <= right; i++ {
+			res += this.nums[i]
+		}
+
+		this.cache[key] = res
 	}
 
-	return res
+	return this.cache[key]
 }
 
 /**
