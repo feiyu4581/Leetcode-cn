@@ -1,16 +1,55 @@
 package section
 
+import (
+	"bytes"
+	"fmt"
+)
+
 type NestedInteger struct {
+	isInteger    bool
+	integerValue int
+	list         []*NestedInteger
 }
 
-func (this NestedInteger) IsInteger() bool {
-	return false
+func (this *NestedInteger) IsInteger() bool {
+	return this.isInteger == true
 }
-func (this NestedInteger) GetInteger() int {
-	return 0
+func (this *NestedInteger) GetInteger() int {
+	return this.integerValue
 }
-func (this NestedInteger) GetList() []*NestedInteger {
-	return nil
+
+func (this *NestedInteger) SetInteger(value int) {
+	this.integerValue = value
+	this.isInteger = true
+}
+
+func (this *NestedInteger) Add(elem NestedInteger) {
+	this.list = append(this.list, &elem)
+}
+
+func (this *NestedInteger) GetList() []*NestedInteger {
+	return this.list
+}
+
+func (this *NestedInteger) String() string {
+	if this.isInteger {
+		return fmt.Sprintf("%d", this.integerValue)
+	}
+
+	var out bytes.Buffer
+
+	out.WriteString("[")
+
+	for i := range this.list {
+		out.WriteString(this.list[i].String())
+		if i+1 != len(this.list) {
+			out.WriteString(",")
+		}
+	}
+
+	out.WriteString("]")
+
+	return out.String()
 }
 
 /*
