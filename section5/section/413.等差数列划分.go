@@ -9,7 +9,7 @@ import "fmt"
  */
 
 // @lc code=start
-func numberOfArithmeticSlices(nums []int) int {
+func numberOfArithmeticSlices413(nums []int) int {
 	if len(nums) < 3 {
 		return 0
 	}
@@ -45,6 +45,6 @@ func numberOfArithmeticSlices(nums []int) int {
 // @lc code=end
 
 func Test413() {
-	fmt.Println(numberOfArithmeticSlices([]int{1, 2, 3, 4}) == 3)
-	fmt.Println(numberOfArithmeticSlices([]int{1}) == 0)
+	fmt.Println(numberOfArithmeticSlices413([]int{1, 2, 3, 4}) == 3)
+	fmt.Println(numberOfArithmeticSlices413([]int{1}) == 0)
 }
